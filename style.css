@@ -1,0 +1,60 @@
+body {
+  background-color: #0f0f0f;
+  color: #00ff00;
+  font-family: monospace;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+h1, h2 {
+  color: #00ff00;
+  border-bottom: 1px solid #004400;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  background-color: #1a1a1a;
+  color: #00ff00;
+  border: 1px solid #004400;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #004400;
+  color: #00ff00;
+  border: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #006600;
+}
+
+textarea {
+  font-family: monospace;
+  height: 300px;
+  resize: vertical;
+  border-radius: 8px;
+}
+
+.section {
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #004400;
+}

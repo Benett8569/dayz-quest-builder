@@ -1,0 +1,72 @@
+let itemsByCategory = {};
+
+async function loadItems() {
+  try {
+    const res = await fetch('data/items_by_category.json');
+    itemsByCategory = await res.json();
+
+    const categorySelect = document.getElementById("categorySelect");
+    const itemSelect = document.getElementById("itemSelect");
+
+    // Remplir les catégories
+    for (const category in itemsByCategory) {
+      const opt = document.createElement("option");
+      opt.value = category;
+      opt.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+      categorySelect.appendChild(opt);
+    }
+
+    // Écouteur sur changement de catégorie
+    categorySelect.addEventListener("change", () => {
+      updateItems(categorySelect.value);
+    });
+
+    // Charger les items de la première catégorie
+    updateItems(categorySelect.value);
+
+  } catch (error) {
+    console.error("Erreur de chargement :", error);
+  }
+}
+
+function updateItems(category) {
+  const itemSelect = document.getElementById("itemSelect");
+  itemSelect.innerHTML = ""; // Reset
+
+  const items = itemsByCategory[category] || [];
+  items.forEach(item => {
+    const opt = document.createElement("option");
+    opt.value = item;
+    opt.textContent = item;
+    itemSelect.appendChild(opt);
+  });
+}
+
+function generateQuest() {
+  const title = document.getElementById("questTitle").value.trim();
+  const item = document.getElementById("itemSelect").value;
+  const qty = parseInt(document.getElementById("itemQty").value);
+  const reward = document.getElementById("rewardItem").value.trim();
+  const rewardQty = parseInt(document.getElementById("rewardQty").value);
+  const npc = document.getElementById("npcID").value.trim();
+
+  if (!title || !item || !reward || !npc) {
+    alert("Merci de remplir tous les champs !");
+    return;
+  }
+
+  const quest = {
+    Title: title,
+    Objectives: [
+      { ObjectiveType: "Collect", Target: item, Amount: qty }
+    ],
+    Rewards: [
+      { ClassName: reward, Quantity: rewardQty }
+    ],
+    QuestTurnInNpcIDs: [npc]
+  };
+
+  document.getElementById("result").value = JSON.stringify(quest, null, 4);
+}
+
+loadItems();

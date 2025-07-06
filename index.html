@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Générateur de Quêtes DayZ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🧩 Générateur de Quêtes DayZ Expansion</h1>
+
+  <div class="section">
+    <label>Titre de la quête :</label>
+    <input id="questTitle" placeholder="Ex : Trouver un AKM" />
+  </div>
+
+  <div class="section">
+    <label>Catégorie d’objet :</label>
+    <select id="categorySelect"></select>
+
+    <label>Objectif (item) :</label>
+    <select id="itemSelect"></select>
+
+    <label>Quantité :</label>
+    <input type="number" id="itemQty" value="1" min="1" />
+  </div>
+
+  <div class="section">
+    <label>Récompense (objet) :</label>
+    <input id="rewardItem" placeholder="Ex : M4A1" />
+    <label>Quantité :</label>
+    <input type="number" id="rewardQty" value="1" min="1" />
+  </div>
+
+  <div class="section">
+    <label>ID du NPC :</label>
+    <input id="npcID" placeholder="Ex : 12345" />
+  </div>
+
+  <button onclick="generateQuest()">✅ Générer la quête</button>
+
+  <h2>📄 Résultat JSON :</h2>
+  <textarea id="result" rows="20" readonly></textarea>
+
+  <script src="script.js"></script>
+</body>
+</html>
